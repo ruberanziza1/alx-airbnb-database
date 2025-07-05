@@ -20,12 +20,13 @@ ORDER BY
 -- 2. Use a window function (ROW_NUMBER, RANK) to rank properties
 --    based on the total number of bookings they have received.
 --    This query first calculates the total bookings for each property
---    and then applies the RANK() window function to assign a rank.
+--    and then applies the RANK() and ROW_NUMBER() window functions to assign ranks.
 SELECT
     property_id,
     property_name,
     total_bookings,
-    RANK() OVER (ORDER BY total_bookings DESC) AS booking_rank
+    RANK() OVER (ORDER BY total_bookings DESC) AS booking_rank,
+    ROW_NUMBER() OVER (ORDER BY total_bookings DESC, property_id) AS booking_row_number
 FROM (
     SELECT
         p.id AS property_id,
@@ -40,4 +41,3 @@ FROM (
 ) AS property_booking_counts
 ORDER BY
     booking_rank, property_id;
-
