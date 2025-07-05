@@ -34,4 +34,3 @@ CREATE INDEX idx_reviews_property_id ON reviews (property_id);
 -- by primary keys or other indexes.
 -- For example, if you frequently order properties by price_per_night:
 -- CREATE INDEX idx_properties_price_per_night ON properties (price_per_night);
-
