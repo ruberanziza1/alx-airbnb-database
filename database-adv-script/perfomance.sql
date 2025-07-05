@@ -71,3 +71,20 @@ WHERE
     b.start_date >= '2023-01-01' AND b.total_price > 500 -- Added WHERE clause for complexity and optimization analysis
 ORDER BY
     b.start_date DESC;
+
+EXPLAIN SELECT
+    b.id AS booking_id,
+    -- ... (rest of the initial query)
+FROM
+    bookings AS b
+INNER JOIN
+    users AS u ON b.user_id = u.id
+INNER JOIN
+    properties AS p ON b.property_id = p.id
+INNER JOIN
+    payments AS pm ON b.id = pm.booking_id
+WHERE
+    b.start_date >= '2023-01-01' AND b.total_price > 500
+ORDER BY
+    b.start_date DESC;
+
