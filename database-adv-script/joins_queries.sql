@@ -34,7 +34,9 @@ SELECT
 FROM
     properties AS p
 LEFT JOIN
-    reviews AS r ON p.id = r.property_id;
+    reviews AS r ON p.id = r.property_id
+ORDER BY
+    p.id, r.id; -- Added ORDER BY clause to sort by property ID and then by review ID
 
 -- 3. Query using a FULL OUTER JOIN to retrieve all users and all bookings,
 --    even if the user has no booking or a booking is not linked to a user.
@@ -85,4 +87,3 @@ FULL OUTER JOIN
 --     bookings AS b ON u.id = b.user_id
 -- WHERE
 --     u.id IS NULL; -- This condition ensures we only pick bookings not matched by the LEFT JOIN part
-
